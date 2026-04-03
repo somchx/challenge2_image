@@ -1,0 +1,15 @@
+# Challenge 2 – Object Detection with Feature Point Matching
+# Install with: pip install -r requirements.txt
+#
+# Note: If you have conda base with OpenCV 4.11 and numpy 2.2, you only
+# need to install matplotlib, jupyter, and pandas.
+#
+# opencv-contrib-python is needed for SIFT access on OpenCV < 4.4.
+# On newer versions (4.8+), SIFT is in the main opencv-python package.
+
+opencv-contrib-python>=4.8.0
+numpy>=1.24.0
+matplotlib>=3.7.0
+jupyter>=1.0.0
+ipykernel>=6.0.0
+pandas>=2.0.0
