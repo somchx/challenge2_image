@@ -42,7 +42,7 @@ CASES = {
 
     'e1': {
         'category'       : 'easy',
-        'label'          : 'Book Cover – Frontal Steady',
+        'label'          : 'Spiral Notebook Cover (oo pplus) – Hand-held Frontal',
         'template'       : 'templates/easy/template_e1.jpg',
         'video'          : 'videos/easy/video_e1.mp4',
         'output'         : 'outputs/easy/output_e1.mp4',
@@ -53,14 +53,16 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'success',
-        'difficulty_notes': 'High-texture flat object (book cover). SIFT finds many stable keypoints. '
-                            'Camera held steady; gentle 5–10° tilt over 10 seconds.',
+        'source'         : 'self-recorded',
+        'difficulty_notes': 'Navy-blue spiral notebook cover ("oo pplus") held in hand against plain wall. '
+                            'IoT/cloud icons and cityscape illustration provide rich SIFT keypoints. '
+                            'Camera held steady with gentle tilt; flat surface, good contrast.',
         'detector_kwargs' : {}
     },
 
     'e2': {
         'category'       : 'easy',
-        'label'          : 'Printed A4 Poster – Slow Pan',
+        'label'          : 'Airbus A380 – Approaching Landing',
         'template'       : 'templates/easy/template_e2.jpg',
         'video'          : 'videos/easy/video_e2.mp4',
         'output'         : 'outputs/easy/output_e2.mp4',
@@ -71,14 +73,17 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'success',
-        'difficulty_notes': 'Colorful printed poster pinned to a neutral wall. '
-                            'Slow horizontal camera pan. Dense print = extreme keypoint density.',
+        'source'         : 'YouTube: https://www.youtube.com/watch?v=d-p1UFcj14U&t=633s',
+        'difficulty_notes': 'Airbus A380 filmed head-on against plain sky during final approach. '
+                            'Aircraft underside has rich structural detail (engines, landing gear, wing edges). '
+                            'Uniform sky background minimises false matches. '
+                            'Object undergoes mild scale increase as plane approaches camera.',
         'detector_kwargs' : {}
     },
 
     'e3': {
         'category'       : 'easy',
-        'label'          : 'Cereal Box Front – Static Camera',
+        'label'          : 'Joker Playing Card – Overhead on Grey Surface',
         'template'       : 'templates/easy/template_e3.jpg',
         'video'          : 'videos/easy/video_e3.mp4',
         'output'         : 'outputs/easy/output_e3.mp4',
@@ -89,14 +94,17 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'success',
-        'difficulty_notes': 'Cereal box on table, camera overhead slightly tilted, static 15 s clip. '
-                            'Logo, text, and cartoon art provide hundreds of SIFT keypoints.',
+        'source'         : 'self-recorded',
+        'difficulty_notes': 'Joker card (rose illustration + portrait) placed on grey surface. '
+                            'Fine-line artwork provides dense SIFT keypoints. '
+                            'Neutral grey background has low texture so background keypoints are minimal. '
+                            'Camera slightly overhead; flat rigid card makes homography exact.',
         'detector_kwargs' : {}
     },
 
     'e4': {
         'category'       : 'easy',
-        'label'          : 'Magazine Cover – Frontal, Well-lit',
+        'label'          : 'USB-C Hub (ADAN) – Static on White Background',
         'template'       : 'templates/easy/template_e4.jpg',
         'video'          : 'videos/easy/video_e4.mp4',
         'output'         : 'outputs/easy/output_e4.mp4',
@@ -107,14 +115,17 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'success',
-        'difficulty_notes': 'Magazine cover with rich typography and imagery. '
-                            'Camera slowly zooms in and out (mild scale change, well within SIFT range).',
+        'source'         : 'self-recorded',
+        'difficulty_notes': 'Small USB-C hub (ADAN brand) on plain white background. '
+                            'Metal chassis edges, logo text, and port openings supply stable keypoints. '
+                            'White background produces almost no competing keypoints. '
+                            'Camera position is near-constant; minimal scale or rotation change.',
         'detector_kwargs' : {}
     },
 
     'e5': {
         'category'       : 'easy',
-        'label'          : 'Playing Card (Face Card) – Overhead',
+        'label'          : 'Oreo Snack Wrapper – Hand-held Against White Background',
         'template'       : 'templates/easy/template_e5.jpg',
         'video'          : 'videos/easy/video_e5.mp4',
         'output'         : 'outputs/easy/output_e5.mp4',
@@ -125,9 +136,11 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'success',
-        'difficulty_notes': 'Face playing card (Jack/Queen/King) on white table. '
-                            'Camera slowly approaches and retreats (scale change). '
-                            'Card art contains fine detail ideal for SIFT.',
+        'source'         : 'self-recorded',
+        'difficulty_notes': 'Individual Oreo snack wrapper (Chinese packaging) held in hand against white background. '
+                            'High-contrast blue wrapper with Oreo logo and Chinese text supplies rich keypoints. '
+                            'White background prevents false matches from surroundings. '
+                            'Slight hand movement introduces mild translation; wrapper surface remains flat.',
         'detector_kwargs' : {}
     },
 
@@ -139,7 +152,7 @@ CASES = {
 
     'd1': {
         'category'       : 'difficult',
-        'label'          : 'Book Cover – 35% Hand Occlusion',
+        'label'          : 'Plaid Notebook – Partial Hand Occlusion on Wooden Table',
         'template'       : 'templates/difficult/template_d1.jpg',
         'video'          : 'videos/difficult/video_d1.mp4',
         'output'         : 'outputs/difficult/output_d1.mp4',
@@ -150,15 +163,18 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'success',
-        'difficulty_notes': 'Same book cover template. Person holds book with ~35% of cover '
-                            'hidden behind hand. Remaining visible keypoints must be sufficient '
-                            'for RANSAC. Tighter ratio (0.70) rejects ambiguous matches.',
+        'source'         : 'YouTube: https://www.youtube.com/watch?v=DD7lU3S_jpY',
+        'difficulty_notes': 'Blue plaid (grid-pattern) notebook held with both hands on wooden table. '
+                            'Two challenges: (1) hands occlude ~30% of the notebook edges; '
+                            '(2) wood-grain texture has horizontal lines similar to the plaid grid, '
+                            'producing competing keypoints. Tighter ratio (0.70) rejects ambiguous '
+                            'cross-surface matches; sufficient unoccluded keypoints survive for RANSAC.',
         'detector_kwargs' : {}
     },
 
     'd2': {
         'category'       : 'difficult',
-        'label'          : 'Poster – Warm/Yellow Illumination Shift',
+        'label'          : 'Pigeons in Flight – Dynamic Cloudy Sky Background',
         'template'       : 'templates/difficult/template_d2.jpg',
         'video'          : 'videos/difficult/video_d2.mp4',
         'output'         : 'outputs/difficult/output_d2.mp4',
@@ -169,16 +185,20 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'success',
-        'difficulty_notes': 'Poster photographed under neutral white light for template. '
-                            'Video filmed under warm incandescent light (color temperature shift). '
-                            'SIFT uses grayscale gradients so color shift is tolerated; CLAHE '
-                            'compensates for contrast changes.',
+        'source'         : 'YouTube: https://www.youtube.com/watch?v=wZVbPe5HVvg',
+        'difficulty_notes': 'Two pigeons in flight against a changing cloudy sky. '
+                            'Challenges: (1) shifting clouds generate spurious keypoints in the background; '
+                            '(2) repetitive feather texture yields ambiguous descriptors; '
+                            '(3) wing motion partially deforms the bird silhouette each frame. '
+                            'CLAHE boosts contrast on the bird body against bright sky; '
+                            'tighter ratio (0.70) suppresses cloud false-matches; '
+                            'bird torso remains rigid enough for homography to hold.',
         'detector_kwargs' : {}
     },
 
     'd3': {
         'category'       : 'difficult',
-        'label'          : 'Cereal Box – Large Viewing Angle (50–60°)',
+        'label'          : 'White Cat in Dark Car Scene – Low Light & Cluttered Background',
         'template'       : 'templates/difficult/template_d3.jpg',
         'video'          : 'videos/difficult/video_d3.mp4',
         'output'         : 'outputs/difficult/output_d3.mp4',
@@ -189,15 +209,20 @@ CASES = {
         'ransac_thresh'  : 6.0,
         'use_clahe'      : True,
         'expected_outcome': 'success',
-        'difficulty_notes': 'Camera rotates around the cereal box, reaching 50–60° viewing angle. '
-                            'Homography is a planar approximation; at large angles it degrades but '
-                            'enough inliers survive for detection. Relaxed ransac_thresh (6px).',
+        'source'         : 'YouTube: https://youtu.be/ZH7umQiTBlI?si=gX_j9VFGwV1NfnQ9',
+        'difficulty_notes': 'White cat wearing a gold outfit filmed inside a dark car with two passengers. '
+                            'Challenges: (1) very low ambient light suppresses gradient magnitudes; '
+                            '(2) complex background (passengers, car interior) competes with cat features; '
+                            '(3) white cat fur has low internal contrast (few keypoints on plain white areas). '
+                            'CLAHE performs tile-level contrast stretching, recovering edges in dark regions; '
+                            'gold outfit and face features provide discriminative keypoints; '
+                            'relaxed ransac_thresh (6px) tolerates minor viewpoint change.',
         'detector_kwargs' : {}
     },
 
     'd4': {
         'category'       : 'difficult',
-        'label'          : 'Textbook – Slight Spine Bend (Non-planar)',
+        'label'          : 'Sea Turtle Underwater – Color Cast & Coral Background Clutter',
         'template'       : 'templates/difficult/template_d4.jpg',
         'video'          : 'videos/difficult/video_d4.mp4',
         'output'         : 'outputs/difficult/output_d4.mp4',
@@ -208,16 +233,21 @@ CASES = {
         'ransac_thresh'  : 7.0,
         'use_clahe'      : True,
         'expected_outcome': 'success',
-        'difficulty_notes': 'Textbook bent gently (~15–20° flex along spine). Introduces slight '
-                            'non-planar deformation. Homography approximates the curved surface '
-                            'as a plane; mild flex still produces enough inliers. Relaxed '
-                            'ransac_thresh (7px) accommodates local deviation from planarity.',
+        'source'         : 'YouTube: https://www.youtube.com/watch?v=klK6mX8jnHQ',
+        'difficulty_notes': 'Green sea turtle swimming above coral reef. '
+                            'Challenges: (1) water introduces blue-green color cast and mild blur; '
+                            '(2) textured coral background generates competing keypoints; '
+                            '(3) turtle changes viewing angle as it swims, altering apparent shape. '
+                            'SIFT operates on grayscale gradients so color cast has limited effect; '
+                            'CLAHE recovers edge detail softened by water; '
+                            'shell scutes and head features provide stable keypoints; '
+                            'relaxed ransac_thresh (7px) accommodates perspective change from swimming motion.',
         'detector_kwargs' : {}
     },
 
     'd5': {
         'category'       : 'difficult',
-        'label'          : 'CD/DVD Label – Slight Glare from Reflection',
+        'label'          : 'Elephant Herd Crossing River – Similar-instance Confusion & Low Contrast',
         'template'       : 'templates/difficult/template_d5.jpg',
         'video'          : 'videos/difficult/video_d5.mp4',
         'output'         : 'outputs/difficult/output_d5.mp4',
@@ -228,9 +258,14 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'success',
-        'difficulty_notes': 'CD/DVD printed label side. Filmed flat on table at slight angle '
-                            'with minor specular reflection glare. CLAHE reduces the impact '
-                            'of local overexposure; printed label area still yields stable keypoints.',
+        'source'         : 'Kaggle: https://www.kaggle.com/code/mistag/play-video-in-notebook/input',
+        'difficulty_notes': 'Single elephant template; video shows a herd of elephants crossing a muddy river. '
+                            'Challenges: (1) multiple elephants share identical gray texture and silhouette; '
+                            '(2) elephant skin and muddy riverbank have similar gray-brown tone (low contrast boundary); '
+                            '(3) water ripples and reflections add noisy keypoints near the legs. '
+                            'Tighter ratio (0.70) reduces cross-individual false matches; '
+                            'CLAHE enhances skin-fold edge detail; '
+                            'RANSAC isolates the inlier cluster belonging to one elephant.',
         'detector_kwargs' : {}
     },
 
@@ -243,7 +278,7 @@ CASES = {
 
     'f1': {
         'category'       : 'expected_fail',
-        'label'          : 'Crowded Pedestrians on Street – Overwhelming Keypoints & Occlusion',
+        'label'          : 'Pedestrian on Busy Street – Non-rigid Moving Object & Background Dominance',
         'template'       : 'templates/expected_fail/template_f1.jpg',
         'video'          : 'videos/expected_fail/video_f1.mp4',
         'output'         : 'outputs/expected_fail/output_f1.mp4',
@@ -254,20 +289,23 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Template = single pedestrian photo; video = crowded street scene. '
-                            'SIFT detects an enormous number of keypoints (~9000+) spread across '
-                            'buildings, signs, and clothing of every person in the scene. '
-                            'Pedestrians constantly occlude each other, changing apparent shape. '
-                            'The background (buildings) produces more stable and numerous keypoints '
-                            'than any single person, causing the matcher to focus on architecture '
-                            'rather than the target. A single planar homography cannot represent '
-                            'a crowd of overlapping, independently moving people.',
+        'source'         : 'YouTube: https://www.youtube.com/watch?v=YzcawvDGe4Y',
+        'difficulty_notes': 'Template = single pedestrian (rear view, white top, brown trousers); '
+                            'video = busy London street with many pedestrians and buildings. '
+                            'Failure reasons: (1) person is non-rigid — arms swing, posture changes '
+                            'every frame, violating homography planarity assumption; '
+                            '(2) shop facades and signs behind the person produce far more stable '
+                            'and numerous SIFT keypoints than clothing, so matcher locks onto '
+                            'architecture instead of the target; '
+                            '(3) other pedestrians with similar clothing frequently occlude the target. '
+                            'Technique needed: person re-identification (deep appearance embedding) '
+                            'or pose-estimation-based tracking.',
         'detector_kwargs' : {}
     },
 
     'f2': {
         'category'       : 'expected_fail',
-        'label'          : 'Highway Traffic – Perspective Distortion & Repetitive Background',
+        'label'          : 'White Van on Highway – Rapid 3D Perspective Change & Repetitive Road Background',
         'template'       : 'templates/expected_fail/template_f2.jpg',
         'video'          : 'videos/expected_fail/video_f2.mp4',
         'output'         : 'outputs/expected_fail/output_f2.mp4',
@@ -278,18 +316,24 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Template = car photo; video = highway traffic with moving vehicles. '
-                            'Vehicles approach and recede rapidly, causing extreme perspective '
-                            'change in 3D that SIFT descriptors cannot fully tolerate. '
-                            'Cars at distance have too few keypoints for reliable matching. '
-                            'Guardrails, road markings, and roadside trees form a highly repetitive '
-                            'background that generates abundant false matches.',
+        'source'         : 'YouTube: https://www.youtube.com/watch?v=nt3D26lrkho&t=22s',
+        'difficulty_notes': 'Template = white delivery van (overhead bird-eye shot); '
+                            'video = highway traffic filmed from an overpass (side/top view). '
+                            'Failure reasons: (1) vehicles pass through the frame in 1–2 seconds, '
+                            'providing too few frames for stable matching; '
+                            '(2) multiple white vans and trucks look nearly identical — '
+                            'descriptor matching cannot distinguish the target from lookalikes; '
+                            '(3) road lane markings, barriers and trees create repetitive background '
+                            'keypoints that overwhelm the few keypoints on the target vehicle; '
+                            '(4) SIFT homography model cannot handle multiple independently moving vehicles. '
+                            'Technique needed: multi-object tracking (e.g. SORT/DeepSORT) or '
+                            'vehicle detector + re-ID.',
         'detector_kwargs' : {}
     },
 
     'f3': {
         'category'       : 'expected_fail',
-        'label'          : 'Waving Flag – Non-rigid Deformation',
+        'label'          : 'EU Flag Waving – Non-rigid Surface Deformation',
         'template'       : 'templates/expected_fail/template_f3.jpg',
         'video'          : 'videos/expected_fail/video_f3.mp4',
         'output'         : 'outputs/expected_fail/output_f3.mp4',
@@ -300,19 +344,24 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Template = flat flag photo; video = flag waving in wind. '
-                            'Flags undergo continuous non-rigid deformation: bending, folding, '
-                            'and self-occlusion. Homography assumes a rigid planar surface; '
-                            'any non-planar warp violates this assumption entirely. '
-                            'Stars or patterns on the flag disappear behind folds and reappear, '
-                            'breaking point correspondences. This is a fundamental limitation '
-                            'of planar feature matching.',
+        'source'         : 'YouTube: https://www.youtube.com/watch?v=cAgyPg1gEPA',
+        'difficulty_notes': 'Template = EU flag flat photo; video = EU flag waving in wind. '
+                            'Failure reasons: (1) waving fabric undergoes continuous non-rigid '
+                            'deformation — bending, folding and self-occlusion every frame; '
+                            '(2) homography is a planar (2D projective) model; any non-planar '
+                            'warp fundamentally violates this assumption; '
+                            '(3) stars on the flag disappear behind folds and reappear in different '
+                            'positions, breaking point correspondences; '
+                            '(4) uniform blue sky background adds sparse but misleading keypoints. '
+                            'The bounding box appears but is severely distorted and unstable. '
+                            'Technique needed: thin-plate-spline or mesh-based non-rigid '
+                            'registration; or texture-flow estimation.',
         'detector_kwargs' : {}
     },
 
     'f4': {
         'category'       : 'expected_fail',
-        'label'          : 'Underwater Shark – Low Contrast & Turbidity',
+        'label'          : 'Shark Underwater – Extreme Low Contrast & Camouflage',
         'template'       : 'templates/expected_fail/template_f4.jpg',
         'video'          : 'videos/expected_fail/video_f4.mp4',
         'output'         : 'outputs/expected_fail/output_f4.mp4',
@@ -323,19 +372,26 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Template = shark photo; video = underwater footage with divers. '
-                            'Water turbidity blurs fine detail and removes sharp edges needed '
-                            'for keypoint detection. Red wavelengths are absorbed by water, '
-                            'causing colour attenuation that makes the shark blend into the '
-                            'blue-grey background (camouflage effect). '
-                            'Sand particles and air bubbles are mistakenly detected as keypoints, '
-                            'flooding the matcher with unstable, noisy correspondences.',
+        'source'         : 'YouTube: https://youtu.be/eoTpdTU8nTA?si=N3zjon83FwVY4fNC',
+        'difficulty_notes': 'Template = shark in clear water (side view); '
+                            'video = open ocean footage with divers and shark in deep blue water. '
+                            'Failure reasons: (1) shark body blends completely into the blue water '
+                            'background — gradient magnitude at object boundary is near zero '
+                            '(counter-shading camouflage); '
+                            '(2) deep water absorbs red/green wavelengths; both shark and background '
+                            'become the same blue-grey tone in grayscale; '
+                            '(3) SIFT finds keypoints on light caustic patterns on the sandy floor '
+                            'and on divers rather than the shark itself; '
+                            '(4) shark is non-rigid (tail undulation) and the body silhouette '
+                            'changes with each stroke. No detection in any frame. '
+                            'Technique needed: infrared or contrast-enhanced imaging; '
+                            'silhouette-based shape matching; or underwater-specific detectors.',
         'detector_kwargs' : {}
     },
 
     'f5': {
         'category'       : 'expected_fail',
-        'label'          : 'Pouring Water into Glass – Transparent Object & Refraction',
+        'label'          : 'Smoke / Steam – Textureless Non-rigid Object',
         'template'       : 'templates/expected_fail/template_f5.jpg',
         'video'          : 'videos/expected_fail/video_f5.mp4',
         'output'         : 'outputs/expected_fail/output_f5.mp4',
@@ -346,13 +402,21 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Template = glass photo; video = water being poured into the glass. '
-                            'Glass is textureless and transparent; any detected keypoints (~1300) '
-                            'come from specular reflections at the rim or from refracted background '
-                            'patterns visible through the glass. Both change continuously with '
-                            'camera angle and water level. The apparent "surface" of the glass '
-                            'carries entirely different pixel content in each frame, making '
-                            'stable descriptor matching impossible.',
+        'source'         : 'YouTube: https://www.youtube.com/watch?v=KEN6S2beTc0',
+        'difficulty_notes': 'Template = white smoke/steam on black background; '
+                            'video = white coffee/tea cup with steam rising on wooden table. '
+                            'Failure reasons: (1) smoke and steam have no fixed texture — '
+                            'they are purely amorphous gas with smoothly varying intensity gradients; '
+                            '(2) SIFT requires repeatable keypoints at stable corners/blobs; '
+                            'a smoke cloud has no such structure — detected keypoints shift '
+                            'to a completely different location in every frame; '
+                            '(3) smoke is fully non-rigid and transparent; '
+                            'homography cannot model its deformation; '
+                            '(4) template background (black) vs video background (wooden table) '
+                            'creates a descriptor domain gap even if shape were stable. '
+                            'Zero good matches in every frame. '
+                            'Technique needed: optical flow / dense motion estimation; '
+                            'temporal difference methods; or generative model of smoke appearance.',
         'detector_kwargs' : {}
     },
 
@@ -364,7 +428,7 @@ CASES = {
 
     'u1': {
         'category'       : 'unexpected_fail',
-        'label'          : 'Plaid Notebook on Wooden Table – Texture Confusion',
+        'label'          : 'Gold Jewelry (Earring/Pendant) – Reflective Surface & 3D Viewpoint Change',
         'template'       : 'templates/unexpected_fail/template_u1.jpg',
         'video'          : 'videos/unexpected_fail/video_u1.mp4',
         'output'         : 'outputs/unexpected_fail/output_u1.mp4',
@@ -375,20 +439,26 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Plaid (grid-pattern) notebook on a wooden table. '
-                            'Expected to succeed: high-contrast blue grid lines on the notebook '
-                            'produce sharp edges and corner-like intersections that detectors favour. '
-                            'Actually fails: the wooden table also has high-frequency line texture '
-                            '(wood grain) whose SIFT descriptors are mathematically similar to the '
-                            'notebook grid. The matcher produces massive numbers of cross-surface '
-                            'outliers; RANSAC cannot separate them, so the computed homography is '
-                            'wildly wrong or fails validation.',
+        'source'         : 'YouTube: https://youtube.com/shorts/hz8xmkeo8qU',
+        'difficulty_notes': 'Gold ornamental earrings/pendant with purple-red gemstones and filigree metalwork. '
+                            'Expected to succeed: intricate filigree and gemstone facets produce 1150+ '
+                            'SIFT keypoints — the highest template keypoint count in this study. '
+                            'Actually fails: (1) the highly reflective gold surface exhibits viewpoint-dependent '
+                            'specular highlights — as the jewelry rotates in the video the bright spots '
+                            'shift position entirely, altering gradient direction and magnitude at those '
+                            'keypoint locations; '
+                            '(2) the jewelry is a 3D object; any tilt reveals a completely different '
+                            'arrangement of facets not seen in the 2D template, breaking descriptor '
+                            'correspondence; '
+                            '(3) homography assumes a planar surface — the convex dome of each gemstone '
+                            'violates this assumption. Rich keypoints exist on the template but none '
+                            'survive matching when the object rotates.',
         'detector_kwargs' : {}
     },
 
     'u2': {
         'category'       : 'unexpected_fail',
-        'label'          : 'Oreo Wrapper – Shadow-induced Feature Distortion',
+        'label'          : 'Orange Fruit – Smooth Curved Surface & Insufficient Gradient',
         'template'       : 'templates/unexpected_fail/template_u2.jpg',
         'video'          : 'videos/unexpected_fail/video_u2.mp4',
         'output'         : 'outputs/unexpected_fail/output_u2.mp4',
@@ -399,19 +469,27 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Oreo snack wrapper on a white background. '
-                            'Expected to succeed: deep navy blue wrapper against bright white '
-                            'background gives 100% contrast; the Oreo logo is a highly unique pattern. '
-                            'Actually fails: cast shadows cross the wrapper during the video, '
-                            'locally altering the gradient magnitude and direction. '
-                            'Keypoints that existed in the shadow-free template either disappear '
-                            'or shift in descriptor space, causing match failure in shadowed frames.',
+        'source'         : 'YouTube: https://youtu.be/GDk7Z9zkFws',
+        'difficulty_notes': 'Single orange fruit against a plain background. '
+                            'Expected to succeed: the dimpled peel texture appears visually rich '
+                            'and the orange colour is highly distinctive. '
+                            'Actually fails: (1) SIFT detects only 193 keypoints — far fewer than '
+                            'expected — because the peel pores are gentle bumps with low gradient '
+                            'magnitude, not sharp corners or blobs; '
+                            '(2) the uniform orange hue means descriptors from any two peel regions '
+                            'are nearly identical (repetitive texture), so ratio test rejects almost '
+                            'every match as ambiguous; '
+                            '(3) the orange is a convex 3D sphere — as it moves or rotates in the '
+                            'video the visible surface patch changes completely, violating the planar '
+                            'homography assumption; '
+                            '(4) CLAHE has little effect because gradient information is genuinely '
+                            'absent, not merely suppressed by poor contrast.',
         'detector_kwargs' : {}
     },
 
     'u3': {
         'category'       : 'unexpected_fail',
-        'label'          : 'Playing Card on Dark Cloth – Background Feature Dominance',
+        'label'          : 'Clownfish (Nemo) – Non-rigid Swimming & Coral Background Dominance',
         'template'       : 'templates/unexpected_fail/template_u3.jpg',
         'video'          : 'videos/unexpected_fail/video_u3.mp4',
         'output'         : 'outputs/unexpected_fail/output_u3.mp4',
@@ -422,19 +500,24 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Playing card placed on dark-gray cloth. '
-                            'Expected to succeed: bright white card on dark background creates '
-                            'extreme value contrast, making object boundaries easy to isolate. '
-                            'Actually fails: the cloth has wrinkles and fabric texture that '
-                            'generate more keypoints than the largely white, low-information card face. '
-                            'The detector prioritises background features; the bounding box jumps '
-                            'across the cloth wrinkles rather than tracking the card.',
+        'source'         : 'YouTube: https://www.youtube.com/watch?v=RCOH9SD5obw&t=6744s',
+        'difficulty_notes': 'Clownfish (Amphiprioninae) with distinctive orange/white/black stripe pattern. '
+                            'Expected to succeed: the high-contrast stripe pattern yields 1293 SIFT keypoints '
+                            '— keypoint density comparable to an easy case — and the colours are visually unique. '
+                            'Actually fails: (1) the fish body is non-rigid; tail, fins and body flex with '
+                            'every swimming stroke, deforming the stripe pattern in ways homography cannot model; '
+                            '(2) the template background is plain black (isolated specimen photo) while '
+                            'the video background is a densely textured coral reef — this descriptor '
+                            'domain gap means matches from the coral far outnumber matches from the fish; '
+                            '(3) underwater caustic light patterns on the reef surface produce additional '
+                            'time-varying keypoints that overwhelm the few stable matches on the fish body; '
+                            '(4) other reef fish with similar colouring cause further instance confusion.',
         'detector_kwargs' : {}
     },
 
     'u4': {
         'category'       : 'unexpected_fail',
-        'label'          : 'Penguin on Snow – Background Clutter Over-segmentation',
+        'label'          : 'Ink Dissolving in Water – Non-rigid Morphing & No Stable Texture',
         'template'       : 'templates/unexpected_fail/template_u4.jpg',
         'video'          : 'videos/unexpected_fail/video_u4.mp4',
         'output'         : 'outputs/unexpected_fail/output_u4.mp4',
@@ -445,20 +528,28 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Single penguin template; video shows the same penguin among rocks '
-                            'and a group of other penguins against snow. '
-                            'Expected to succeed: black penguin on white snow is near-binary contrast. '
-                            'Actually fails: other penguins and dark rocks share the same black/white '
-                            'texture signature as the template. The matcher finds inliers scattered '
-                            'across multiple penguins and rocks; RANSAC forms a homography that '
-                            'covers the whole group, producing an over-expanded bounding box that '
-                            'engulfs unrelated objects.',
+        'source'         : 'YouTube: https://www.youtube.com/watch?v=pGbIOC83-So',
+        'difficulty_notes': 'Blue ink or paint droplet dissolving and diffusing in water, '
+                            'forming a complex cloud-like blob against a white background. '
+                            'Expected to succeed: the ink cloud has complex branching structure '
+                            'and SIFT detects 822 keypoints on it — a seemingly sufficient count '
+                            'and higher than several successful cases. '
+                            'Actually fails: (1) the ink cloud is a fully non-rigid fluid — its '
+                            'shape, density, and internal texture change continuously every frame '
+                            'as convection currents disperse the pigment; '
+                            '(2) although 822 keypoints are detected on the static template, none '
+                            'of these keypoints correspond to any stable or repeatable structure — '
+                            'the "texture" is an instantaneous snapshot of a transient fluid state; '
+                            '(3) this is conceptually similar to the smoke/steam expected-fail case (f5) '
+                            'but visually deceptive because the blob appears richer and more structured; '
+                            '(4) RANSAC cannot find even a minimal inlier set because no correspondence '
+                            'between template frame and video frame is geometrically consistent.',
         'detector_kwargs' : {}
     },
 
     'u5': {
         'category'       : 'unexpected_fail',
-        'label'          : 'Elephant Herd Crossing River – Low Contrast Camouflage',
+        'label'          : 'Ant – Reflective Exoskeleton, Non-rigid Motion & Tiny Scale',
         'template'       : 'templates/unexpected_fail/template_u5.jpg',
         'video'          : 'videos/unexpected_fail/video_u5.mp4',
         'output'         : 'outputs/unexpected_fail/output_u5.mp4',
@@ -469,15 +560,23 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Herd of elephants crossing a river. '
-                            'Expected to succeed: elephants are large with distinctive silhouettes; '
-                            'skin folds and shadows should create detectable features. '
-                            'Actually fails: elephant skin and riverbank mud share the same '
-                            'gray/brown tone (low contrast camouflage). The detector cannot extract '
-                            'stable edges or corners at the object boundary because pixel gradients '
-                            'are negligible. Descriptors from skin wrinkles on the template match '
-                            'spuriously with similar-looking mud/rock texture in the video, '
-                            'causing severe mismatch or complete detection failure.',
+        'source'         : 'YouTube: https://youtu.be/AKQkuNifoas',
+        'difficulty_notes': 'Single ant (Formicidae) on a plain white background. '
+                            'Expected to succeed: the ant has a clearly segmented body (head, thorax, '
+                            'abdomen) with distinct boundaries and 236 SIFT keypoints — sufficient '
+                            'for many successful cases in this study. '
+                            'Actually fails: (1) the ant exoskeleton is highly reflective (chitinous '
+                            'shell) — specular highlights on the head and abdomen shift completely '
+                            'with any change in lighting angle or camera position, changing descriptors '
+                            'at those locations; '
+                            '(2) the ant is non-rigid — six legs, antennae, and the gaster (abdomen) '
+                            'move independently and continuously, so no single homography can model '
+                            'the full body deformation; '
+                            '(3) the ant is small relative to the frame; at reduced scale the template '
+                            'region is tiny, making individual descriptor patches cover a larger '
+                            'proportion of the object and become highly sensitive to any motion; '
+                            '(4) the natural terrain background (soil, leaf litter) in the video '
+                            'introduces competing textured keypoints that outnumber the ant\'s own features.',
         'detector_kwargs' : {}
     },
 }
