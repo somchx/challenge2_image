@@ -345,7 +345,7 @@ CASES = {
 
     'u1': {
         'category'       : 'unexpected_fail',
-        'label'          : 'Book Cover – Severe Motion Blur',
+        'label'          : 'Plaid Notebook on Wooden Table – Texture Confusion',
         'template'       : 'templates/unexpected_fail/template_u1.jpg',
         'video'          : 'videos/unexpected_fail/video_u1.mp4',
         'output'         : 'outputs/unexpected_fail/output_u1.mp4',
@@ -356,17 +356,20 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Same book cover as an easy case. Camera is waved quickly — '
-                            'fast panning motion causes severe motion blur on most frames. '
-                            'Blur smears keypoints; SIFT detects far fewer stable points '
-                            'in blurred frames, dropping below min_matches threshold. '
-                            'Expected to succeed (same object as easy case) but fails due to blur.',
+        'difficulty_notes': 'Plaid (grid-pattern) notebook on a wooden table. '
+                            'Expected to succeed: high-contrast blue grid lines on the notebook '
+                            'produce sharp edges and corner-like intersections that detectors favour. '
+                            'Actually fails: the wooden table also has high-frequency line texture '
+                            '(wood grain) whose SIFT descriptors are mathematically similar to the '
+                            'notebook grid. The matcher produces massive numbers of cross-surface '
+                            'outliers; RANSAC cannot separate them, so the computed homography is '
+                            'wildly wrong or fails validation.',
         'detector_kwargs' : {}
     },
 
     'u2': {
         'category'       : 'unexpected_fail',
-        'label'          : 'Poster – Sudden Lights Off Mid-Video',
+        'label'          : 'Oreo Wrapper – Shadow-induced Feature Distortion',
         'template'       : 'templates/unexpected_fail/template_u2.jpg',
         'video'          : 'videos/unexpected_fail/video_u2.mp4',
         'output'         : 'outputs/unexpected_fail/output_u2.mp4',
@@ -377,17 +380,19 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Poster template photographed under good lighting. '
-                            'Video starts well (detection works), then mid-video room light is '
-                            'switched off and only dim ambient/phone light remains. '
-                            'Severe underexposure destroys gradient information. '
-                            'Detection fails for all dark frames despite object still being present.',
+        'difficulty_notes': 'Oreo snack wrapper on a white background. '
+                            'Expected to succeed: deep navy blue wrapper against bright white '
+                            'background gives 100% contrast; the Oreo logo is a highly unique pattern. '
+                            'Actually fails: cast shadows cross the wrapper during the video, '
+                            'locally altering the gradient magnitude and direction. '
+                            'Keypoints that existed in the shadow-free template either disappear '
+                            'or shift in descriptor space, causing match failure in shadowed frames.',
         'detector_kwargs' : {}
     },
 
     'u3': {
         'category'       : 'unexpected_fail',
-        'label'          : 'Tiny Logo Crop – Template Too Small',
+        'label'          : 'Playing Card on Dark Cloth – Background Feature Dominance',
         'template'       : 'templates/unexpected_fail/template_u3.jpg',
         'video'          : 'videos/unexpected_fail/video_u3.mp4',
         'output'         : 'outputs/unexpected_fail/output_u3.mp4',
@@ -398,18 +403,19 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Template is a very tightly cropped small logo (~80×80 px) from a '
-                            'larger product. Video shows the full product from normal distance. '
-                            'The template has too few pixels → very few SIFT keypoints. '
-                            'In the video, the logo region is tiny relative to the frame, '
-                            'making reliable homography estimation impossible. '
-                            'Surprise: the same product in an easy case succeeds with full-frame template.',
+        'difficulty_notes': 'Playing card placed on dark-gray cloth. '
+                            'Expected to succeed: bright white card on dark background creates '
+                            'extreme value contrast, making object boundaries easy to isolate. '
+                            'Actually fails: the cloth has wrinkles and fabric texture that '
+                            'generate more keypoints than the largely white, low-information card face. '
+                            'The detector prioritises background features; the bounding box jumps '
+                            'across the cloth wrinkles rather than tracking the card.',
         'detector_kwargs' : {}
     },
 
     'u4': {
         'category'       : 'unexpected_fail',
-        'label'          : 'Brick Wall – Repetitive Texture Confusion',
+        'label'          : 'Penguin on Snow – Background Clutter Over-segmentation',
         'template'       : 'templates/unexpected_fail/template_u4.jpg',
         'video'          : 'videos/unexpected_fail/video_u4.mp4',
         'output'         : 'outputs/unexpected_fail/output_u4.mp4',
@@ -420,20 +426,20 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Template = close-up of a brick wall section (looks textured, should work). '
-                            'Video = camera pans over the same wall. '
-                            'Repetitive regular pattern confuses the matcher: many bricks look '
-                            'near-identical, so ratio test passes spuriously with wrong correspondences. '
-                            'RANSAC receives many inliers but they map to the wrong brick, '
-                            'producing a degenerate or incorrect homography that fails validation. '
-                            'Surprise: the template has detectable keypoints, so naive inspection '
-                            'suggests it should work.',
+        'difficulty_notes': 'Single penguin template; video shows the same penguin among rocks '
+                            'and a group of other penguins against snow. '
+                            'Expected to succeed: black penguin on white snow is near-binary contrast. '
+                            'Actually fails: other penguins and dark rocks share the same black/white '
+                            'texture signature as the template. The matcher finds inliers scattered '
+                            'across multiple penguins and rocks; RANSAC forms a homography that '
+                            'covers the whole group, producing an over-expanded bounding box that '
+                            'engulfs unrelated objects.',
         'detector_kwargs' : {}
     },
 
     'u5': {
         'category'       : 'unexpected_fail',
-        'label'          : 'Phone Back / Mirror – View-dependent Reflections',
+        'label'          : 'Elephant Herd Crossing River – Low Contrast Camouflage',
         'template'       : 'templates/unexpected_fail/template_u5.jpg',
         'video'          : 'videos/unexpected_fail/video_u5.mp4',
         'output'         : 'outputs/unexpected_fail/output_u5.mp4',
@@ -444,14 +450,15 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Template = photo of a polished phone back / small mirror from one angle. '
-                            'Video = camera moves slightly around the same surface. '
-                            'The "features" detected on the shiny surface are reflections of '
-                            'the surrounding environment, which change completely with viewpoint. '
-                            'Template and frame descriptors do not match because the reflected '
-                            'image is different. Breaks the appearance constancy assumption. '
-                            'Surprise: the surface has detectable features in both template and '
-                            'video, but they correspond to different reflected content.',
+        'difficulty_notes': 'Herd of elephants crossing a river. '
+                            'Expected to succeed: elephants are large with distinctive silhouettes; '
+                            'skin folds and shadows should create detectable features. '
+                            'Actually fails: elephant skin and riverbank mud share the same '
+                            'gray/brown tone (low contrast camouflage). The detector cannot extract '
+                            'stable edges or corners at the object boundary because pixel gradients '
+                            'are negligible. Descriptors from skin wrinkles on the template match '
+                            'spuriously with similar-looking mud/rock texture in the video, '
+                            'causing severe mismatch or complete detection failure.',
         'detector_kwargs' : {}
     },
 }
