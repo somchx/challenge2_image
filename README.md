@@ -28,11 +28,11 @@
 
 | Template | Output GIF |
 |---|---|
-| ![e1 template](templates/easy/template_e1.jpg) | ![e1 gif](outputs/easy/output_e1.gif) |
+| ![e1 template](outputs/easy/output_e1.png) | ![e1 gif](outputs/easy/output_e1.gif) |
 
 **ที่มา:** ถ่ายเอง  
 **วัตถุเป้าหมาย:** ปกสมุดโน้ต spiral สีน้ำเงิน แบรนด์ "pplus"  
-**Template:** `templates/easy/template_e1.jpg` | **Video:** `videos/easy/video_e1.mp4`
+**Template:** `outputs/easy/output_e1.png` | **Video:** `videos/easy/video_e1.mp4`
 
 **อธิบายเทคนิคและผลลัพธ์:**  
 ปกสมุดมีภาพ IoT icons, cityscape และโลโก้ที่ให้ fine-detail texture สูง SIFT ตรวจจับ keypoint ได้จำนวนมากบริเวณเส้นและขอบภาพประกอบ ถือสมุดด้วยมือหันหน้ากล้องตรง พื้นหลังผนังเรียบ (low texture) ลด false match CLAHE เพิ่ม local contrast บริเวณ icon สีขาวบน background น้ำเงิน ระบบ detect และวาด bounding polygon ครอบสมุดได้ถูกต้องตลอดวิดีโอ
@@ -43,11 +43,11 @@
 
 | Template | Output GIF |
 |---|---|
-| ![e2 template](templates/easy/template_e2.jpg) | ![e2 gif](outputs/easy/output_e2.gif) |
+| ![e2 template](outputs/easy/output_e2.png) | ![e2 gif](outputs/easy/output_e2.gif) |
 
 **ที่มา:** YouTube — https://www.youtube.com/watch?v=d-p1UFcj14U&t=633s  
 **วัตถุเป้าหมาย:** เครื่องบิน Airbus A380 กำลังบินเข้าสู่รันเวย์  
-**Template:** `templates/easy/template_e2.jpg` | **Video:** `videos/easy/video_e2.mp4`
+**Template:** `outputs/easy/output_e2.png` | **Video:** `videos/easy/video_e2.mp4`
 
 **อธิบายเทคนิคและผลลัพธ์:**  
 ถ่ายเครื่องบินจากด้านหน้าตรง (head-on) ใต้ท้องเครื่องมีโครงสร้างชัดเจน ได้แก่ เครื่องยนต์ 4 ตัว ช่วงล้อ และขอบปีก ซึ่งเป็น high-gradient edge ที่ SIFT ชอบ ท้องฟ้าที่สม่ำเสมอแทบไม่มี keypoint รบกวน วัตถุค่อยๆ ขยายขึ้นขณะเครื่องบินบินเข้าหา SIFT รับมือกับ scale change ผ่าน scale-space pyramid ได้ดี ระบบ track เครื่องบินได้ตลอดคลิป
@@ -58,11 +58,11 @@
 
 | Template | Output GIF |
 |---|---|
-| ![e3 template](templates/easy/template_e3.jpg) | ![e3 gif](outputs/easy/output_e3.gif) |
+| ![e3 template](outputs/easy/output_e3.png) | ![e3 gif](outputs/easy/output_e3.gif) |
 
 **ที่มา:** ถ่ายเอง  
 **วัตถุเป้าหมาย:** ไพ่ Joker (ภาพดอกกุหลาบ + ใบหน้า)  
-**Template:** `templates/easy/template_e3.jpg` | **Video:** `videos/easy/video_e3.mp4`
+**Template:** `outputs/easy/output_e3.png` | **Video:** `videos/easy/video_e3.mp4`
 
 **อธิบายเทคนิคและผลลัพธ์:**  
 ไพ่ Joker มีภาพดอกกุหลาบและใบหน้าลายเส้นละเอียดมาก SIFT ตรวจจับ keypoint ได้หนาแน่นบน fine-line artwork วางบนพื้นสีเทา (neutral grey) ที่มี texture ต่ำ ทำให้แทบไม่มี keypoint จากพื้นหลังมารบกวน กล้องมองจากบนลงล่างตรงๆ วัตถุแบนแข็ง homography compute ได้แม่นยำ ผลลัพธ์เสถียรตลอดวิดีโอ
@@ -73,11 +73,11 @@
 
 | Template | Output GIF |
 |---|---|
-| ![e4 template](templates/easy/template_e4.jpg) | ![e4 gif](outputs/easy/output_e4.gif) |
+| ![e4 template](outputs/easy/output_e4.png) | ![e4 gif](outputs/easy/output_e4.gif) |
 
 **ที่มา:** ถ่ายเอง  
 **วัตถุเป้าหมาย:** USB-C Hub ยี่ห้อ ADAN  
-**Template:** `templates/easy/template_e4.jpg` | **Video:** `videos/easy/video_e4.mp4`
+**Template:** `outputs/easy/output_e4.png` | **Video:** `videos/easy/video_e4.mp4`
 
 **อธิบายเทคนิคและผลลัพธ์:**  
 อุปกรณ์ USB-C Hub โลหะสีเทา วางบนพื้นขาวเรียบ ขอบโลหัส, ช่องพอร์ต และโลโก้ ADAN ให้ keypoint ที่ stable บนพื้นขาวที่แทบไม่มี keypoint รบกวน กล้องนิ่งเกือบตลอด การเปลี่ยน scale และ rotation น้อยมาก ระบบ detect ได้สม่ำเสมอตลอดวิดีโอ
@@ -88,11 +88,11 @@
 
 | Template | Output GIF |
 |---|---|
-| ![e5 template](templates/easy/template_e5.jpg) | ![e5 gif](outputs/easy/output_e5.gif) |
+| ![e5 template](outputs/easy/output_e5.png) | ![e5 gif](outputs/easy/output_e5.gif) |
 
 **ที่มา:** ถ่ายเอง  
 **วัตถุเป้าหมาย:** ซองขนม Oreo (บรรจุภัณฑ์ภาษาจีน) ถือในมือ  
-**Template:** `templates/easy/template_e5.jpg` | **Video:** `videos/easy/video_e5.mp4`
+**Template:** `outputs/easy/output_e5.png` | **Video:** `videos/easy/video_e5.mp4`
 
 **อธิบายเทคนิคและผลลัพธ์:**  
 ซองขนม Oreo สีน้ำเงินเข้มพร้อมโลโก้และตัวอักษรจีนที่ชัดเจน ให้ high-contrast keypoint ที่ discriminative สูง พื้นหลังขาวสว่างป้องกัน false match จากสิ่งแวดล้อม ถือด้วยมือทำให้เกิด translation เล็กน้อย แต่ซองยังคง flat อยู่ homography compute ได้ถูกต้อง CLAHE ช่วย normalize ความสว่างระหว่าง template กับ frame ระบบ detect ตลอดวิดีโอ
@@ -118,11 +118,11 @@
 
 | Template | Output GIF |
 |---|---|
-| ![d1 template](templates/difficult/template_d1.jpg) | ![d1 gif](outputs/difficult/output_d1.gif) |
+| ![d1 template](outputs/difficult/output_d1.png) | ![d1 gif](outputs/difficult/output_d1.gif) |
 
 **ที่มา:** YouTube — https://www.youtube.com/watch?v=DD7lU3S_jpY  
 **วัตถุเป้าหมาย:** สมุดโน้ตลาย plaid (ตาราง) สีน้ำเงิน  
-**Template:** `templates/difficult/template_d1.jpg` | **Video:** `videos/difficult/video_d1.mp4`  
+**Template:** `outputs/difficult/output_d1.png` | **Video:** `videos/difficult/video_d1.mp4`  
 **Parameters:** ratio=0.70, min_matches=8, min_inliers=6, ransac_thresh=5.0
 
 **ความยากที่พบ:**
@@ -137,11 +137,11 @@
 
 | Template | Output GIF |
 |---|---|
-| ![d2 template](templates/difficult/template_d2.jpg) | ![d2 gif](outputs/difficult/output_d2.gif) |
+| ![d2 template](outputs/difficult/output_d2.png) | ![d2 gif](outputs/difficult/output_d2.gif) |
 
 **ที่มา:** YouTube — https://www.youtube.com/watch?v=wZVbPe5HVvg  
 **วัตถุเป้าหมาย:** นกพิราบ 2 ตัวกำลังบิน  
-**Template:** `templates/difficult/template_d2.jpg` | **Video:** `videos/difficult/video_d2.mp4`  
+**Template:** `outputs/difficult/output_d2.png` | **Video:** `videos/difficult/video_d2.mp4`  
 **Parameters:** ratio=0.70, min_matches=8, min_inliers=6, ransac_thresh=5.0
 
 **ความยากที่พบ:**
@@ -157,11 +157,11 @@
 
 | Template | Output GIF |
 |---|---|
-| ![d3 template](templates/difficult/template_d3.jpg) | ![d3 gif](outputs/difficult/output_d3.gif) |
+| ![d3 template](outputs/difficult/output_d3.png) | ![d3 gif](outputs/difficult/output_d3.gif) |
 
 **ที่มา:** YouTube — https://youtu.be/ZH7umQiTBlI?si=gX_j9VFGwV1NfnQ9  
 **วัตถุเป้าหมาย:** แมวขาวสวมเสื้อสีทอง ในรถยนต์  
-**Template:** `templates/difficult/template_d3.jpg` | **Video:** `videos/difficult/video_d3.mp4`  
+**Template:** `outputs/difficult/output_d3.png` | **Video:** `videos/difficult/video_d3.mp4`  
 **Parameters:** ratio=0.70, min_matches=8, min_inliers=6, ransac_thresh=6.0
 
 **ความยากที่พบ:**
@@ -177,11 +177,11 @@
 
 | Template | Output GIF |
 |---|---|
-| ![d4 template](templates/difficult/template_d4.jpg) | ![d4 gif](outputs/difficult/output_d4.gif) |
+| ![d4 template](outputs/difficult/output_d4.png) | ![d4 gif](outputs/difficult/output_d4.gif) |
 
 **ที่มา:** YouTube — https://www.youtube.com/watch?v=klK6mX8jnHQ  
 **วัตถุเป้าหมาย:** เต่าทะเล (green sea turtle)  
-**Template:** `templates/difficult/template_d4.jpg` | **Video:** `videos/difficult/video_d4.mp4`  
+**Template:** `outputs/difficult/output_d4.png` | **Video:** `videos/difficult/video_d4.mp4`  
 **Parameters:** ratio=0.70, min_matches=8, min_inliers=6, ransac_thresh=7.0
 
 **ความยากที่พบ:**
@@ -197,11 +197,11 @@
 
 | Template | Output GIF |
 |---|---|
-| ![d5 template](templates/difficult/template_d5.jpg) | ![d5 gif](outputs/difficult/output_d5.gif) |
+| ![d5 template](outputs/difficult/output_d5.png) | ![d5 gif](outputs/difficult/output_d5.gif) |
 
 **ที่มา:** Kaggle — https://www.kaggle.com/code/mistag/play-video-in-notebook/input  
 **วัตถุเป้าหมาย:** ช้างตัวหนึ่งในฝูง (ใช้ template ช้างตัวเดียว)  
-**Template:** `templates/difficult/template_d5.jpg` | **Video:** `videos/difficult/video_d5.mp4`  
+**Template:** `outputs/difficult/output_d5.png` | **Video:** `videos/difficult/video_d5.mp4`  
 **Parameters:** ratio=0.70, min_matches=8, min_inliers=6, ransac_thresh=5.0
 
 **ความยากที่พบ:**
@@ -225,11 +225,11 @@
 
 | Template | Output GIF |
 |---|---|
-| ![f1 template](templates/expected_fail/template_f1.jpg) | ![f1 gif](outputs/expected_fail/output_f1.gif) |
+| ![f1 template](outputs/expected_fail/output_f1.png) | ![f1 gif](outputs/expected_fail/output_f1.gif) |
 
 **ที่มา:** YouTube — https://www.youtube.com/watch?v=YzcawvDGe4Y  
 **วัตถุเป้าหมาย:** ผู้หญิงคนหนึ่ง (เสื้อขาว กางเกงน้ำตาล มองด้านหลัง) ในฝูงชน  
-**Template:** `templates/expected_fail/template_f1.jpg` | **Video:** `videos/expected_fail/video_f1.mp4`
+**Template:** `outputs/expected_fail/output_f1.png` | **Video:** `videos/expected_fail/video_f1.mp4`
 
 **วิธีที่ลองแล้ว:** SIFT + CLAHE + FLANN + RANSAC (ratio=0.75, min_inliers=8) ตาม pipeline มาตรฐาน
 
@@ -246,11 +246,11 @@
 
 | Template | Output GIF |
 |---|---|
-| ![f2 template](templates/expected_fail/template_f2.jpg) | ![f2 gif](outputs/expected_fail/output_f2.gif) |
+| ![f2 template](outputs/expected_fail/output_f2.png) | ![f2 gif](outputs/expected_fail/output_f2.gif) |
 
 **ที่มา:** YouTube — https://www.youtube.com/watch?v=nt3D26lrkho&t=22s  
 **วัตถุเป้าหมาย:** รถตู้สีขาว (delivery van) บนไฮเวย์  
-**Template:** `templates/expected_fail/template_f2.jpg` | **Video:** `videos/expected_fail/video_f2.mp4`
+**Template:** `outputs/expected_fail/output_f2.png` | **Video:** `videos/expected_fail/video_f2.mp4`
 
 **วิธีที่ลองแล้ว:** SIFT + CLAHE + FLANN + RANSAC (ratio=0.75, min_inliers=8) ตาม pipeline มาตรฐาน
 
@@ -267,11 +267,11 @@
 
 | Template | Output GIF |
 |---|---|
-| ![f3 template](templates/expected_fail/template_f3.jpg) | ![f3 gif](outputs/expected_fail/output_f3.gif) |
+| ![f3 template](outputs/expected_fail/output_f3.png) | ![f3 gif](outputs/expected_fail/output_f3.gif) |
 
 **ที่มา:** YouTube — https://www.youtube.com/watch?v=cAgyPg1gEPA  
 **วัตถุเป้าหมาย:** ธงสหภาพยุโรป (EU flag)  
-**Template:** `templates/expected_fail/template_f3.jpg` | **Video:** `videos/expected_fail/video_f3.mp4`
+**Template:** `outputs/expected_fail/output_f3.png` | **Video:** `videos/expected_fail/video_f3.mp4`
 
 **วิธีที่ลองแล้ว:** SIFT + CLAHE + FLANN + RANSAC (ratio=0.75, min_inliers=8) ตาม pipeline มาตรฐาน
 
@@ -290,11 +290,11 @@
 
 | Template | Output GIF |
 |---|---|
-| ![f4 template](templates/expected_fail/template_f4.jpg) | ![f4 gif](outputs/expected_fail/output_f4.gif) |
+| ![f4 template](outputs/expected_fail/output_f4.png) | ![f4 gif](outputs/expected_fail/output_f4.gif) |
 
 **ที่มา:** YouTube — https://youtu.be/eoTpdTU8nTA?si=N3zjon83FwVY4fNC  
 **วัตถุเป้าหมาย:** ฉลาม (shark) ใต้ทะเลลึก  
-**Template:** `templates/expected_fail/template_f4.jpg` | **Video:** `videos/expected_fail/video_f4.mp4`
+**Template:** `outputs/expected_fail/output_f4.png` | **Video:** `videos/expected_fail/video_f4.mp4`
 
 **วิธีที่ลองแล้ว:** SIFT + CLAHE (เพิ่ม clipLimit) + FLANN + RANSAC ตาม pipeline มาตรฐาน; ลอง CLAHE เข้มข้นขึ้น
 
@@ -311,11 +311,11 @@
 
 | Template | Output GIF |
 |---|---|
-| ![f5 template](templates/expected_fail/template_f5.jpg) | ![f5 gif](outputs/expected_fail/output_f5.gif) |
+| ![f5 template](outputs/expected_fail/output_f5.png) | ![f5 gif](outputs/expected_fail/output_f5.gif) |
 
 **ที่มา:** YouTube — https://www.youtube.com/watch?v=KEN6S2beTc0  
 **วัตถุเป้าหมาย:** ควัน/ไอน้ำ (smoke/steam) จากถ้วยกาแฟ  
-**Template:** `templates/expected_fail/template_f5.jpg` | **Video:** `videos/expected_fail/video_f5.mp4`
+**Template:** `outputs/expected_fail/output_f5.png` | **Video:** `videos/expected_fail/video_f5.mp4`
 
 **วิธีที่ลองแล้ว:** SIFT + CLAHE + FLANN + RANSAC (ratio=0.75, min_inliers=8) ตาม pipeline มาตรฐาน
 
