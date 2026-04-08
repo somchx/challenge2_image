@@ -237,12 +237,13 @@ CASES = {
     # ──────────────────────────────────────────
     # EXPECTED FAIL CASES (f1 – f5)
     # ──────────────────────────────────────────
-    # The template object has no distinguishable feature points.
-    # SIFT/ORB find very few keypoints on the template; matching is impossible.
+    # Objects/scenes that are fundamentally incompatible with feature-point
+    # matching: non-rigid deformation, transparent/reflective surfaces,
+    # dynamic crowds, or extreme background clutter.
 
     'f1': {
         'category'       : 'expected_fail',
-        'label'          : 'Plain White Wall – No Texture',
+        'label'          : 'Crowded Pedestrians on Street – Overwhelming Keypoints & Occlusion',
         'template'       : 'templates/expected_fail/template_f1.jpg',
         'video'          : 'videos/expected_fail/video_f1.mp4',
         'output'         : 'outputs/expected_fail/output_f1.mp4',
@@ -253,15 +254,20 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Template = photo of a plain white wall. Near-zero gradient → '
-                            'SIFT finds almost no keypoints. No matches possible regardless '
-                            'of scene. Expected to fail because feature-point methods require texture.',
+        'difficulty_notes': 'Template = single pedestrian photo; video = crowded street scene. '
+                            'SIFT detects an enormous number of keypoints (~9000+) spread across '
+                            'buildings, signs, and clothing of every person in the scene. '
+                            'Pedestrians constantly occlude each other, changing apparent shape. '
+                            'The background (buildings) produces more stable and numerous keypoints '
+                            'than any single person, causing the matcher to focus on architecture '
+                            'rather than the target. A single planar homography cannot represent '
+                            'a crowd of overlapping, independently moving people.',
         'detector_kwargs' : {}
     },
 
     'f2': {
         'category'       : 'expected_fail',
-        'label'          : 'Solid-color T-shirt – No Features',
+        'label'          : 'Highway Traffic – Perspective Distortion & Repetitive Background',
         'template'       : 'templates/expected_fail/template_f2.jpg',
         'video'          : 'videos/expected_fail/video_f2.mp4',
         'output'         : 'outputs/expected_fail/output_f2.mp4',
@@ -272,15 +278,18 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Uniform-color cotton T-shirt (no print/logo). '
-                            'Fabric has no local gradient structure → no keypoints on template. '
-                            'Feature matching is fundamentally inapplicable here.',
+        'difficulty_notes': 'Template = car photo; video = highway traffic with moving vehicles. '
+                            'Vehicles approach and recede rapidly, causing extreme perspective '
+                            'change in 3D that SIFT descriptors cannot fully tolerate. '
+                            'Cars at distance have too few keypoints for reliable matching. '
+                            'Guardrails, road markings, and roadside trees form a highly repetitive '
+                            'background that generates abundant false matches.',
         'detector_kwargs' : {}
     },
 
     'f3': {
         'category'       : 'expected_fail',
-        'label'          : 'Blank Notebook Cover – Smooth, Featureless',
+        'label'          : 'Waving Flag – Non-rigid Deformation',
         'template'       : 'templates/expected_fail/template_f3.jpg',
         'video'          : 'videos/expected_fail/video_f3.mp4',
         'output'         : 'outputs/expected_fail/output_f3.mp4',
@@ -291,15 +300,19 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Plain notebook cover, single flat color, no embossing or print. '
-                            'Smooth surface → no corners or blobs for SIFT/ORB. '
-                            'Keypoint count on template expected to be 0–5.',
+        'difficulty_notes': 'Template = flat flag photo; video = flag waving in wind. '
+                            'Flags undergo continuous non-rigid deformation: bending, folding, '
+                            'and self-occlusion. Homography assumes a rigid planar surface; '
+                            'any non-planar warp violates this assumption entirely. '
+                            'Stars or patterns on the flag disappear behind folds and reappear, '
+                            'breaking point correspondences. This is a fundamental limitation '
+                            'of planar feature matching.',
         'detector_kwargs' : {}
     },
 
     'f4': {
         'category'       : 'expected_fail',
-        'label'          : 'Clear Glass Bottle – Transparent, View-dependent',
+        'label'          : 'Underwater Shark – Low Contrast & Turbidity',
         'template'       : 'templates/expected_fail/template_f4.jpg',
         'video'          : 'videos/expected_fail/video_f4.mp4',
         'output'         : 'outputs/expected_fail/output_f4.mp4',
@@ -310,17 +323,19 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Clear glass water bottle. The "features" detected on the template '
-                            'belong to the background visible through the glass, not the bottle '
-                            'itself. When the background changes between template and video, '
-                            'these features do not match. Transparent objects are a known '
-                            'failure mode for appearance-based methods.',
+        'difficulty_notes': 'Template = shark photo; video = underwater footage with divers. '
+                            'Water turbidity blurs fine detail and removes sharp edges needed '
+                            'for keypoint detection. Red wavelengths are absorbed by water, '
+                            'causing colour attenuation that makes the shark blend into the '
+                            'blue-grey background (camouflage effect). '
+                            'Sand particles and air bubbles are mistakenly detected as keypoints, '
+                            'flooding the matcher with unstable, noisy correspondences.',
         'detector_kwargs' : {}
     },
 
     'f5': {
         'category'       : 'expected_fail',
-        'label'          : 'Uniform Carpet Patch – No Distinct Pattern',
+        'label'          : 'Pouring Water into Glass – Transparent Object & Refraction',
         'template'       : 'templates/expected_fail/template_f5.jpg',
         'video'          : 'videos/expected_fail/video_f5.mp4',
         'output'         : 'outputs/expected_fail/output_f5.mp4',
@@ -331,9 +346,13 @@ CASES = {
         'ransac_thresh'  : 5.0,
         'use_clahe'      : True,
         'expected_outcome': 'fail',
-        'difficulty_notes': 'Patch of plain carpet or floor tile. Uniform or near-uniform texture '
-                            'yields no stable keypoints with unique descriptors. Any apparent '
-                            'keypoints are unstable across viewpoints.',
+        'difficulty_notes': 'Template = glass photo; video = water being poured into the glass. '
+                            'Glass is textureless and transparent; any detected keypoints (~1300) '
+                            'come from specular reflections at the rim or from refracted background '
+                            'patterns visible through the glass. Both change continuously with '
+                            'camera angle and water level. The apparent "surface" of the glass '
+                            'carries entirely different pixel content in each frame, making '
+                            'stable descriptor matching impossible.',
         'detector_kwargs' : {}
     },
 
